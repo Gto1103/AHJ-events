@@ -39,7 +39,6 @@ export default class Game {
     if (this.missesCount === 5) {
       this.statusGame = 'lose';
     }
-
     if (this.hitsCount === 9) {
       this.statusGame = 'win';
     }
@@ -56,6 +55,7 @@ export default class Game {
     this.statusGame = 'play';
     this.missesCount = 0;
     this.hitsCount = 0;
+    this.removeEnemy();
   }
 
   gameOver() {
@@ -84,10 +84,11 @@ export default class Game {
       return;
     }
 
-    if ((this.field.querySelectorAll('.enemy').length === 0)) {
+    if (!(this.field.querySelectorAll('.goblin').length === 0)) {
       this.missesCount += 1;
       this.displayCounter('miss-counter');
     }
+
     this.randomChangeEnemy();
   }
 
